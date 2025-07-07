@@ -1,0 +1,23 @@
+{
+  "go.useCodeSnippetsOnFunctionSuggest": true,
+  "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+  "go.formatTool": "goimports",
+  "go.lintTool": "staticcheck",
+  "go.lintOnSave": "package",
+  "go.testOnSave": false,
+  "go.coverageDecorator": {
+    "type": "gutter",
+    "coveredHighlightColor": "rgba(64, 128, 128, 0.5)",
+    "uncoveredHighlightColor": "rgba(128, 64, 0, 0.5)",
+    "coveredGutterStyle": "blockgreen",
+    "uncoveredGutterStyle": "blockred"
+  },
+  "go.buildOnSave": "package",
+  "gopls": {
+    "ui.semanticTokens": true
+  },
+  "debug.inlineValues": "on",
+  "debug.showBreakpointsInOverviewRuler": true,
+  "debug.toolBarLocation": "docked",
+  "debug.openDebug": "openOnFirstSessionStart"
+}
