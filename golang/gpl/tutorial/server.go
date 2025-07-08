@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strconv"
 	"sync"
 )
 
@@ -18,6 +19,7 @@ func Server() {
 	http.HandleFunc("/", baseHandler)
 	http.HandleFunc("/favicon.ico", faviconHandler)
 	http.HandleFunc("/count", countHandler)
+	http.HandleFunc("/gif", gifHandler)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
@@ -85,4 +87,23 @@ func faviconHandler(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "image/png")
 	res.Header().Set("Content-Length", fmt.Sprintf("%d", fileInfo.Size()))
 	io.Copy(res, file)
+}
+
+func gifHandler(res http.ResponseWriter, req *http.Request) {
+	fmt.Println("GET /gif")
+
+	cycles := req.URL.Query().Get("cycles")
+	if cycles == "" {
+		cycles = "5"
+	}
+
+	// Convert string to int with error handling
+	cyclesNum, err := strconv.Atoi(cycles)
+	if err != nil {
+		http.Error(res, "Invalid cycles value", http.StatusBadRequest)
+		return
+	}
+
+	// Convert int to float64 for lissajous function
+	lissajous(float64(cyclesNum), res)
 }
