@@ -25,6 +25,8 @@ func main() {
 			"https://jsonplaceholder.typicode.com/photos",
 			"https://jsonplaceholder.typicode.com/users",
 		})
+	case "server":
+		tutorial.Server()
 	default:
 		fmt.Println("Invalid argument")
 	}

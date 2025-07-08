@@ -17,7 +17,8 @@ func Fetch() {
 			continue
 		}
 
-		fmt.Println("HttpStatus: ", resp.Status)
+		fmt.Printf("\nHttpStatus: %s\n", resp.Status)
+		fmt.Printf("\nResponse body: ")
 
 		bytesCopied, err := io.Copy(os.Stdout, resp.Body)
 		resp.Body.Close()
@@ -26,6 +27,6 @@ func Fetch() {
 			continue
 		}
 
-		fmt.Println("Bytes Copied: ", bytesCopied)
+		fmt.Printf("\n\nBytes Copied: %d\n", bytesCopied)
 	}
 }
