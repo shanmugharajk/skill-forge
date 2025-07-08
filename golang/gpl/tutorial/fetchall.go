@@ -10,7 +10,7 @@ import (
 func FetchAll(urls []string) {
 	fmt.Printf("\n== fetching urls ==\n\n")
 
-	ch := make(chan string)
+	ch := make(chan string, len(urls))
 
 	start := time.Now()
 
@@ -19,6 +19,7 @@ func FetchAll(urls []string) {
 	}
 
 	for range urls {
+		// It will read one by value from channel. This will block until a value is available.
 		fmt.Println(<-ch)
 	}
 
