@@ -1,7 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"gpl/code/reader"
+	"os"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	arg := os.Args[1]
+
+	switch arg {
+	case "reader":
+		reader.Run()
+	default:
+		fmt.Println("Invalid argument")
+	}
 }
