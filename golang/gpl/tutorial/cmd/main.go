@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"gpl/tutorial"
+	"gpl/tutorial/types"
 	"os"
 )
 
@@ -27,6 +28,8 @@ func main() {
 		})
 	case "server":
 		tutorial.Server()
+	case "types":
+		types.Run()
 	default:
 		fmt.Println("Invalid argument")
 	}
